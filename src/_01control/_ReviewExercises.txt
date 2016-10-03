@@ -8,4 +8,55 @@ R1.5 The following are all benefits to using Java over machine code:
 3/ Java is memory-managed. This reduces about 95% of runtime errors (mostly memory-related) as compared to unmanaged code.
 4/ Java was designed for networking and the Internet in mind; and it is generally safer than machine code
 
+R2.3    s = s0 + v0 * t + g * t * t / 2.0;
+        G = 4 * Math.PI * Math.PI * a * a * a / (p * p * (m1 + m2));
+        FV = PV * Math.pow(1 + INT / 100.0, YRS);
+        c = Math.sqrt(a * a + b * b - 2 * a * b * Math.cos(y));
 
+R2.6    a. 8;
+        b. 1;
+        c. 17;
+        d. 17.5;
+        e. 17;
+        f. 18;
+
+R2.10   This is due to the small errors of the floating point numbers in Java;
+        We can import java.text.DecimalFormat;
+        Then define: DecimalFormat df = new DecimalFormat("0.00");
+        Use df.format() to display the results and then we will avoid this problem;
+
+R2.11   2 is a integer;
+        2.0 is a floating point number;
+        '2' is a character;
+        "2" is a string and it contains only 1 character;
+        "2.0" is a string and it contains 3 characters;
+
+R2.15   let num = input;
+        let n = (int)Math.log10(input);
+        the first digit = input / (int)Math.pow(10, n);
+        the last digit = input % 10;
+
+R3.18   input Score;
+        switch((int)Score / 10)
+            case 9: Grade = 'A', break;
+            case 8: Grade = 'B', break;
+            case 7: Grade = 'C', break;
+            case 6: Grade = 'D', break;
+            default: Grade = 'F';
+
+R4.9    Java supports for loop and while loop.
+        If we already know exactly how many times we want the loop to execute, we should use for loop.
+        If we do not know how many times the loop should execute but we want it to stop when a condition applies, we should use while loop.
+
+R4.12   print line "Celsius | Fahrenheit";
+        print line "------- + ----------";
+        for (i = 0; i <= 10 ;i++)
+            print 10 * i(spanning 7 digits);
+            print " | ";
+            print line 10 * i * 1.8 + 32(spanning 10 digits);
+
+R4.15   int s = 0, i = 1;
+        while (i <= 10){
+            s = s + i;
+            i++;
+        }
