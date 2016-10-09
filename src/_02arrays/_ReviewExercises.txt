@@ -14,7 +14,117 @@ Since Java5, you can even specify a variable number of arguments aka varargs whi
 Notice that the varargs parameter "String... strNickNames" must be listed last.  Calling this method would look something like this:
  String[] strReturnValues = someMethod(99, "Jim", "Jamie", "James", "Jamey", "Jimmy", "Jimbo");
 
+R5.8    Pseudocode
 
+        public static String translate(String s)
+            String a;
+            n = the length of s;
+            for i = 0 : n - 1
+                if '0' <= s[i] <= '9' or s[i] == '-'
+                    a = a + s[i];
+                else if 'A' <= s[i] <= 'Z'
+                    int n = s[i] - 'A'
+                    if (n >= 18)
+                    n = n - 1;
+                    n = n / 3 + 2;
+                    if n == 10
+                        n = n - 1;
+                    char c = (char)('0' + n);
+                    a = a + c;
+            return a;
 
+R5.10   Variable scope
 
+        i, b are local to function main;
+        Then i, n are local to function f;
+        Then a, b are local to function g, and n, i only exist in the for loop;
+        The program prints [sqrt(0)] + [sqrt(1)] +[sqrt(2)] + ... +[sqrt(9)] = 16;
 
+R5.14   Pass by value versus pass by reference
+
+        Becuase the arguments are passed to the falseSwap function by value. So the falseSwaqp function
+        only changes the value of the two arguments inside it, but it can not change the variables in
+        the main function.
+
+R6.6    Arrays, initialize and and out-of-bounds
+
+        The indices of values[10] is from 0 to 9, not including 10;
+        values[] is not initialized, so the length of it is not designated;
+
+R6.10   ArrayLists rules
+
+        a. The type of ArrayList can not be primitive type;
+        b. The right side of the equation lacks < >;
+        c. The right side of the equation lacks ( );
+        d. To add values to the ArrayList, we should method 'add' but not method 'set'. Since the
+           length of the ArrayList is unknown;
+        e. The ArrayList is not initialized;
+
+R6.11   Index values
+
+        An index is the ordinal of the variables in the array. The legal index values is from
+        0 to the length of the array minus 1; If you use the index out of the legal index range,
+        there will be a bounds error.
+
+R6.21   Rotate elements of array pseudocode
+
+        Let n = the length of the array;
+        Let t = Array[n-1];
+        for i = 1 : n - 1
+            Array[i-1] = Array[i];
+        Array[i-1] = t;
+
+R6.23   Binary insert algorithm
+
+        Suppose the original array is A[n1];
+        Create a new array B[n2], n2 = n1 + 1;
+        for i = 0 : n1 - 1
+            B[i] = A[i];
+        Let the new value to be t;
+        B[n2 - 1] = t;
+        for i = n2 - 1 : 1
+            if (B[i-1] > B[i])
+                swap B[i-1] and B[i];
+            else
+                break;
+
+R6.25   References to arrays
+
+        In the method, values = numbers means that in the memory values and numbers point to the same
+        area. After the method is called, the array numbers does not exist and all its members become
+        0. So that the array values becomes a 0 array.
+
+R7.6    Checked versus unchecked exceptions
+
+        Unchecked exceptions are descendants of RuntimeException, such as as IndexOutOfBoundsException
+        or Illegal-ArgumentException indicate errors in the code.
+
+        Other exceptions are checked exceptions. These exceptions indicate that something has gone
+        wrong for some external reason beyond our control, for example, the FileNotFoundException.
+
+        You need to declare the checked exceptions with "throws".
+
+R7.7    Checked versus unchecked exceptions
+
+        The unchecked exceptions are caused by your fault. The compiler does not check whether
+        you handle an unchecked exception, such as an IndexOutOfBoundsException. After all, you
+        should check your index values rather than install a handler for that exception.
+
+R7.9    Exceptions
+
+        Each catch clause contains the handler for an exception type.If an exception does not have
+        a matching catch clause, then the exception cannot be handled and the program will be
+        terminated.
+
+R7.11   Exceptions
+
+        No. It is likely that there are some unchecked exceptions in the program. These can not be
+        catched.
+
+R7.14   Exceptions
+
+        The next method can throw NoSuchElementException and IllegalStateException, they are both
+        unchecked exceptions.
+
+        The nextInt method can throw InputMismatchException, NoSuchElementException and
+        IllegalStateException, they are all unchecked exceptions.
