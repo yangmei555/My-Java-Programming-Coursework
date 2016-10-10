@@ -1,0 +1,10 @@
+Alice ; Dinner ; 100 ; 10/9/2016 ;
+Bob ; Conference ; 50 ; 10/8/2016 ;
+Clare ; Lodging ; 80 ; 10/7/2016 ;
+David ; Lunch ; 120 ; 10/8/2016 ;
+Elizabeth ; Conference ; 30 ; 10/6/2016 ;
+Fermat ; Lunch ; 140 ; 10/6/2016 ;
+Garlilio ; Dinner ; 70 ; 10/5/2016 ;
+Henry ; Conference ; 100 ; 10/7/2016 ;
+Ivan ; Lodging ; 130 ; 10/5/2016 ;
+Jane ; Lodging ; 120 ; 10/5/2016 ;
