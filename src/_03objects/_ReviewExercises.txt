@@ -2,6 +2,10 @@
 # Use this file to answer Review Exercises from the Big Java textbook
 #########################################################################
 
+R8.1 Encapsulation
+
+    The process of providing a public interface, while hiding the implementation details, is called
+    encapsulation.
 
 
 
