@@ -2,8 +2,57 @@
 # Use this file to answer Review Exercises from the Big Java textbook
 #########################################################################
 
+R8.1 Encapsulation
 
+    The process of providing a public interface, while hiding the implementation details, is called encapsulation.
+    It is useful because encapsulation enables changes in the implementation without affecting users of a class.
 
+R8.4 Public interface
 
+    The method declarations and comments make up the public interface of the class. The data and the method bodies
+    make up the private implementation of the class.
 
+R8.7 Instance versus static
 
+    An instance method is a method that can be invoked on the object of the class. You can access the instance
+    variables of the class in the method body. But you can not access the instance variables of the class in the
+    static method. Static method belongs to the class, not the objects.
+
+R8.8 Mutator and accessor
+
+    A mutator method modifies the object on which it operates.
+    An accessor method queries the object for some information without changing it.
+
+R8.9 Implicit parameter
+
+    The object on which a method is applied is the implicit parameter.
+    Explicit parameters of a method are listed in the method declaration.
+    In Java, you do not actually write the implicit parameter in the method declaration.
+
+R8.10 Implicit parameter
+
+    Every instance method has exactly one implicit parameter and zero or more explicit parameters.
+    A static method does't have implicit parameters.
+
+R8.12 Constructors
+
+    A class can have lots of constructors.
+    Yes, you can. There is a default one.
+    The compiler picks the constructor that matches the construction arguments.
+
+R8.16 Instance variables
+
+    The private word means that you can only access or modify the variable or method inside the class. Anything
+    outside the class can not access or modify the private variables or methods.
+
+R8.19 The this reference
+
+    In a method, the this reference refers to the implicit parameter.
+    You can use the this reference to make the program clear that some variables are instance variables and not
+    local variables.
+
+R8.20 Zero, null, false, empty String
+
+    Number zero, the null reference, the value false, are the default values of number variables, reference variables,
+    boolean variables. The empty string is a valid string of length 0, whereas a null indicates that a String variable
+    refers to no string at all.
