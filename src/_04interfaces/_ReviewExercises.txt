@@ -34,9 +34,6 @@ R9.7 Inheretence
 
     The UML diagram is in src\\_04interfaces.
 
-R9.8 Inheretence
-
-R9.9 Inheretence
 
 
 R9.10 Casting
