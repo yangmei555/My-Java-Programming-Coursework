@@ -2,8 +2,50 @@
 # Use this file to answer Review Exercises from the Big Java textbook
 #########################################################################
 
+R9.1 Superclas and subclass
+
+    a. superclass: Employee, subclass: Manager
+    b. superclass: Student, subclass: GraduateStudent
+    c. superclass: Person, subclass: Student
+    d. superclass: Employee, subclass: Professor
+    e. superclass: BankAccount, subclass: CheckingAccount
+    f. superclass: Vehicle, subclass: Car
+    g. superclass: Vehicle, subclass: Minivan
+    h. superclass: Car, subclass: Minivan
+    i. superclass: Vehicle, subclass: Truck
+
+
+R9.2 superclass and subclass
+
+    Because the difference between the subclasses are only in values but not behaviors. All of the
+    subclasses will behave in the same way.
+
+
+R9.4 SavingsAccount
+
+    The SavingsAccount class inherits the deposit and getBalance method, overrides the withdraw and
+    monthEnd method, and adds the setInterestRate method.
+
+R9.6 Sandwich
+
+    a. and d. are legal, b. and c. are illegal.
+
+R9.7 Inheretence
+
+    The UML diagram is in src\\_04interfaces.
 
 
 
+R9.10 Casting
+
+    (BankAccount) x does not change the content of the variable x, but (int) x changes the content of
+    the variable x.
 
 
+R9.11 instanceof operator
+
+    a. b. d. e. return true. Others return false;
+
+R9.14 Edible interface
+
+    a. c. f. are legal. Others are illegal.
