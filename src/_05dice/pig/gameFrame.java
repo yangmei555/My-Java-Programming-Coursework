@@ -75,7 +75,7 @@ public class gameFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int times = ra.nextInt(10) + 1;
                 int i;
-                System.out.println(times);
+                //System.out.println(times);
                 for (i = 0; i < times; i++){
                     computercurrent = ra.nextInt(6) + 1;
                     computerlabel.setText(computercurrent + "");
