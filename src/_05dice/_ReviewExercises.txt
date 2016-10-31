@@ -2,8 +2,75 @@
 # Use this file to answer Review Exercises from the Big Java textbook
 #########################################################################
 
+R10.5 Events
+
+    The event objects are instances of classes that you must provide when handling events, the
+    methods of the event listener classes contain the instructions that you want to have executed
+    when the events occur.
+
+    The event source is the user-interface component, such as a button, that generates a particular
+    event.
+
+    An event listener belongs to a class created by the application programmer. Its methods describe
+    the actions to be taken when an event occurs.
 
 
+R10.6 actionPerformed
+
+    The event source. It occurs whenever the event occurs.
 
 
+R10.11 Inner class and event-listeners
 
+    There are two advantages of using inner classes: First, listener classes tend to be very short.
+    You can put the inner class close to where it is needed, without cluttering up the remainder of
+    the project. Moreover, inner classes have a very attractive feature: Their methods can access
+    instance variables and methods of the surrounding class.
+
+    Yes, we could. we could define the actionPerformed class inside our main class and use "this"
+    to replace the inner class object.
+
+
+R10.14 Object hierarchies
+
+    The method append() is declared in JTextArea.It inherits getText() from JTextComponent. It inherits
+    getWidth() from JComponent.
+
+
+R10.22 Graphic methods
+
+    Make the top-left coordinates and the width and height of the rectangle become variables so that
+    they are changeable.
+
+
+R11.2 Layout managers
+
+    It is far more convenient to handle;
+
+
+R11.11 ButtonGroup
+
+    Because radio buttons are mutually exclusive, only one button in the group can be selected at
+    any time. But the check boxs are not.
+
+
+R11.19 Types of Events
+
+    MouseEvent is the parameter type for methods in MouseListener and handls events caused by the
+    mouse. ActionEvent is the parameter type for methods in ActionListener and handles events caused
+    by clicking the buttons.
+
+
+R11.20 Events
+
+    The action event contains the information about when the event happens, what kind of event it
+    is, and so on. The mouse event contains other more information such as the X and Y coordinators
+    of the location of the mouse.
+
+
+R11.21 ActionListener versus MouseListener
+
+    The ActionListener should only detect one state of the event, that is, whether the button is
+    clicked or not. But the mouse has lots of states, pressed or not pressed, released or not
+    released, clicked or not clicked, and so on. So the MouseListener needs more methods to handle
+    all these situations.

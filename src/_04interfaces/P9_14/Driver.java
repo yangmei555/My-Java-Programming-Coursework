@@ -1,5 +1,8 @@
 package _04interfaces.P9_14;
 
+import _04interfaces.P9_8.Person;
+import _04interfaces.P9_8.Student;
+
 import java.awt.*;
 
 /**
