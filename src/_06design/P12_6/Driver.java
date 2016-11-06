@@ -112,7 +112,7 @@ public class Driver {
                     System.out.println("\nCongratulations! You get " +
                             score + " point(s)\n");
                     if (score % 5 == 0){
-                        System.out.println("\nYou have get " + score + " marks, if you want to quit, " +
+                        System.out.println("\nYou have got " + score + " marks, if you want to quit, " +
                                 "please press q, \nif you want to restart from level 1, " +
                                 "please press 1, \nif you want to restart from level 2, " +
                                 "please press 2, \nif you just want to continue with level 3, " +
@@ -137,7 +137,7 @@ public class Driver {
                         System.out.println("\nCongratulations! You get " +
                                 score + " point(s)\n");
                         if (score % 5 == 0){
-                            System.out.println("\nYou have get " + score + " marks, if you want to quit, " +
+                            System.out.println("\nYou have got " + score + " marks, if you want to quit, " +
                                     "please press q, \nif you want to restart from level 1, " +
                                     "\nplease press 1, \nif you want to restart from level 2, " +
                                     "please press 2, \nif you just want to continue with level 3, " +
