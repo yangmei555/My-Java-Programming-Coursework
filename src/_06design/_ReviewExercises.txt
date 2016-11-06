@@ -2,8 +2,68 @@
 # Use this file to answer Review Exercises from the Big Java textbook
 #########################################################################
 
+R12.1 OO Analysis and Design
+
+    First, you should discover the classes. Use CRC cards and UML diagrams. Then determine the dependency of the classes
+    involved in the problem, and make them cohesive. Then determine the responsibilities of each class. At last describe
+    the relationships between the classes.
 
 
+R12.2 OO Analysis and Design
+
+    You can discover classes and methods by looking for the nouns and verbs in the requirements specification. Often,
+    nouns correspond to classes, and verbs correspond to methods.
 
 
+R12.3 OO Analysis and Design
 
+    A simple rule for finding these methods is to look for verbs in the task description, then match the verbs to the
+    appropriate objects. An excellent way to carry out this task is the "CRC card method".
+
+
+R12.8 Relationships
+
+    a. aggregation;
+    b. inheritance;
+    c. inheritance;
+    d. neither;
+    e. aggregation;
+    f. inheritance;
+    g. aggregation;
+    h. aggregation;
+
+
+R12.11 CRC Cards (no need to draw them, just create a text version of the CRC card and put answers in ReviewExercises)
+
+                            CashRegister
+                    enterPayment         Coin
+
+
+R12.13 UML Diagram - Use the UML tool in IntelliJ. Indicate to the grader where this is located.
+
+    See R_13.jpg.
+
+
+R12.14 UML Diagram and CRC - Use the UML tool in IntelliJ. Indicate to the grader where this is located.
+
+                                        Records
+          find each country's area              Country
+          find each country's population        Country
+
+       See R_14.jpg as the UML.
+
+
+R12.16 Identifying objects from problem description
+
+    The classes are: VendingMachine, Coin, Product.
+
+
+R12.18 Identifying objects from problem description
+
+    See R_18.jpg.
+
+
+R12.19 imports and fully qualified names
+
+    If you want to use a class from a package, you can refer to it by its full name. Using the package prefix can avoid
+    import statements. That is, use the fully qualified package and class name inline.
