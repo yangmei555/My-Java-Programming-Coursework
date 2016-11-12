@@ -2,8 +2,49 @@
 # Use this file to answer Review Exercises from the Big Java textbook
 #########################################################################
 
+R13.1 Terms
+
+    a. Recursion
+    A recursive computation solves a problem by using the solution to the same problem with simpler
+    inputs.
+
+    b. Iteration
+    Iteration is to use a for loop or a while loop to make the problem easier and easier and to
+    solve the problem.
+
+    c. Infinite recursion
+    A method calling itself over and over with no end in sight.
+
+    d. Recursive helper method
+    A recursive helper method is to make a slight change to the original problem and to make it
+    easier to to find a recursive solution.
 
 
+R13.2 Smallest value
 
+    Each time, take the first element of the input array, compare it with the smallest value of
+    the remaining array, and take the smaller one as output. The base case is that when the array
+    only remains two elements, return the smaller one.
+
+
+R13.3 Sort array of numbers
+
+    Each time, find the smallest value in the array using the way explained in R13.2, and exchange
+    this smallest element with the first element in the array. Then remove the first element in the
+    array and take the remaining array as input. The base case is that when the array only remains
+    two elements, exchange them to guarantee that the smaller element is in front of the larger
+    element.
+
+
+R13.6 Exponents recursively
+
+    Suppose function f(int n) is what we use to solve the problem.
+    When i>=2, f(i) = f(i - 1) * x. If i equals to 1, return x.
+
+
+R13.8 Factorial recursively
+
+    Suppose function f(int n) is what we use to solve the problem.
+    When i>=2, f(i) = f(i - 1) * i. If i equals to 1, return 1.
 
 
