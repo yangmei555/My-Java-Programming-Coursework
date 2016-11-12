@@ -16,8 +16,8 @@ import java.util.Random;
  * Created by yangmei555 on 2016/11/11.
  */
 public class BlackJackFrame extends JFrame{
-    private static final int FRAME_WIDTH = 1200;
-    private static final int FRAME_HEIGHT = 1200;
+    private static final int FRAME_WIDTH = 1000;
+    private static final int FRAME_HEIGHT = 1000;
     private static final int AREA_ROWS = 10;
     private static final int AREA_COLUMNS = 30;
     private static final int COMPONENT_WIDTH = 300;
@@ -34,6 +34,7 @@ public class BlackJackFrame extends JFrame{
     private int player_point, computer_point, player_money, bet_amount;
     private int player_card_amount, computer_card_amount;
     private int[] decks_amount;
+    private int[][] decks_value;
     private Image image = null;
     private JComponent component;
 
@@ -43,6 +44,7 @@ public class BlackJackFrame extends JFrame{
         createPanel_s();
         createPanel_e();
         createPanel_w();
+
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
     }
 
@@ -67,8 +69,6 @@ public class BlackJackFrame extends JFrame{
 //        component.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
 //        panel_n.add(component);
 
-
-        //addPicture(1, 4);
         add(panel_n, BorderLayout.NORTH);
     }
 
@@ -94,13 +94,13 @@ public class BlackJackFrame extends JFrame{
 //        panel_n.add(component);
 
 
-
+        //addPicture(1, 4);
         add(panel_s, BorderLayout.SOUTH);
     }
 
     public void createPanel_w(){
         panel_w = new JPanel();
-        panel_w.setLayout(new GridLayout(10, 1));
+        panel_w.setLayout(new GridLayout(16, 1));
         resultLabel = new JLabel("Result: no result");
         bet_input_label = new JLabel("Please input your bet amount:");
         betField = new JTextField();
@@ -117,7 +117,6 @@ public class BlackJackFrame extends JFrame{
                 } catch (NumberFormatException ee) {
                     //ee.printStackTrace();
                     System.out.println("Your input is wrong, please input an integer!");
-                    bet_amount_label.setText("");
                 }
                 bet_amount_label.setText("Your bet amount is: " + bet_amount);
             }
@@ -136,21 +135,62 @@ public class BlackJackFrame extends JFrame{
         reload.setVisible(false);
         reload_label.setVisible(false);
 
-        computer_card_amount = 1;
-        hit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("haha");
-                addPicture(5, 4);
-            }
-        });
-
         panel_w.add(hit);
         panel_w.add(stand);
         panel_w.add(reload_label);
         panel_w.add(reload);
 
+
+        decks_value = new int[6][52];
+        for (int i = 0; i < 6; i++)
+            for (int j = 0; j < 52; j++)
+                decks_value[i][j] = 1;
+        hit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel_n.removeAll();
+                panel_n.add(computerLabel);
+                panel_s.removeAll();
+                panel_s.add(playerLabel);
+                giveCard();
+
+            }
+        });
+
+
+
         add(panel_w, BorderLayout.WEST);
+    }
+
+    public void giveCard(){
+        int n1;
+        int n2;
+        if (decks_amount[0] + decks_amount[1] + decks_amount[2] + decks_amount[3] + decks_amount[4] +
+                decks_amount[5] != 0){
+            n1 = random.nextInt(6);
+            n2 = random.nextInt(52);
+            while (decks_amount[n1] == 0){
+                n1 = random.nextInt(6);
+            }
+            while (decks_value[n1][n2] == 0){
+                n2 = random.nextInt(52);
+            }
+            decks_amount[n1]--;
+            decks_value[n1][n2] = 0;
+            if (decks_amount[0] + decks_amount[1] + decks_amount[2] + decks_amount[3] + decks_amount[4] +
+                    decks_amount[5] == 0){
+                reload_label.setVisible(true);
+                reload.setVisible(true);
+                return;
+            }
+            addPicture(1, n2);
+
+
+        } else {
+            reload_label.setVisible(true);
+            reload.setVisible(true);
+            return;
+        }
     }
 
     public void createPanel_c(){
@@ -185,6 +225,12 @@ public class BlackJackFrame extends JFrame{
         JScrollPane scrollPane = new JScrollPane(result_area);
         panel_e.add(scrollPane);
         panel_e.add(restart);
+        restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addPicture(1, 11);
+            }
+        });
         add(panel_e, BorderLayout.EAST);
     }
 
@@ -208,67 +254,86 @@ public class BlackJackFrame extends JFrame{
                     e.printStackTrace();
                 }
                 g.drawImage(image, 0, 0, null);
+                //repaint();
             }
+
+//            @Override
+//            public void repaint(long tm, int x, int y, int width, int height) {
+//                super.repaint(tm, x, y, width, height);
+//            }
         };
         component.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
-        if (i == 1)
+        if (i == 1) {
             panel_n.add(component);
-        else if (i == 2)
+            panel_n.revalidate();
+        }
+        else if (i == 2){
             panel_w.add(component);
-        else if (i == 3)
+            panel_w.revalidate();
+        }
+        else if (i == 3){
             panel_c.add(component);
-        else if (i == 4)
+            panel_c.revalidate();
+        }
+        else if (i == 4){
             panel_e.add(component);
-        else if (i == 5)
+            panel_e.revalidate();
+        }
+        else if (i == 5){
             panel_s.add(component);
+            panel_s.revalidate();
+        }
         //panel_n.remove(component);
+        //repaint();
     }
 
-    public void addPicture(int i, int n, boolean flag){
-        if (flag) {
-            String str;
-            if (n == 53)
-                str = n + ".png";
-            else
-                str = n + ".jpg";
-            component = new JComponent() {
-                @Override
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    Image image = null;
-                    try {
-                        image = ImageIO.read(new File("src\\_07blackjack\\blackjack\\" +
-                                "pictures\\" + str));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    g.drawImage(image, 0, 0, null);
-                }
-            };
-            component.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
-            if (i == 1)
-                panel_n.add(component);
-            else if (i == 2)
-                panel_w.add(component);
-            else if (i == 3)
-                panel_c.add(component);
-            else if (i == 4)
-                panel_e.add(component);
-            else if (i == 5)
-                panel_s.add(component);
-            //panel_n.remove(component);
-        } else {
-            if (i == 1)
-                panel_n.remove(component);
-            else if (i == 2)
-                panel_w.remove(component);
-            else if (i == 3)
-                panel_c.remove(component);
-            else if (i == 4)
-                panel_e.remove(component);
-            else if (i == 5)
-                panel_s.remove(component);
-            //panel_n.remove(component);
-        }
-    }
+
+
+//    public void addPicture(int i, int n, boolean flag){
+//        if (flag) {
+//            String str;
+//            if (n == 53)
+//                str = n + ".png";
+//            else
+//                str = n + ".jpg";
+//            component = new JComponent() {
+//                @Override
+//                protected void paintComponent(Graphics g) {
+//                    super.paintComponent(g);
+//                    Image image = null;
+//                    try {
+//                        image = ImageIO.read(new File("src\\_07blackjack\\blackjack\\" +
+//                                "pictures\\" + str));
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    g.drawImage(image, 0, 0, null);
+//                }
+//            };
+//            component.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
+//            if (i == 1)
+//                panel_n.add(component);
+//            else if (i == 2)
+//                panel_w.add(component);
+//            else if (i == 3)
+//                panel_c.add(component);
+//            else if (i == 4)
+//                panel_e.add(component);
+//            else if (i == 5)
+//                panel_s.add(component);
+//            //panel_n.remove(component);
+//        } else {
+//            if (i == 1)
+//                panel_n.remove(component);
+//            else if (i == 2)
+//                panel_w.remove(component);
+//            else if (i == 3)
+//                panel_c.remove(component);
+//            else if (i == 4)
+//                panel_e.remove(component);
+//            else if (i == 5)
+//                panel_s.remove(component);
+//            //panel_n.remove(component);
+//        }
+//    }
 }
