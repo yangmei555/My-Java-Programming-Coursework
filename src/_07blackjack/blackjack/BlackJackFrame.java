@@ -131,8 +131,9 @@ public class BlackJackFrame extends JFrame{
                     return;
                 }
                 if (!begin && bet_amount != 0) {
+                    resultLabel.setText("Result: no result");
                     notice_label.setText("Notice");
-                    bet_amount_label.setText("Your bet amount is: " + bet_amount);
+                    bet_amount_label.setText("Your bet amount is: $" + bet_amount);
                     player_money -= bet_amount;
                     moneyLabel.setText("Your have $" + player_money);
                     computerLabel.setText("Computer Point: 0");
@@ -158,16 +159,17 @@ public class BlackJackFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (begin) {
-                    if (player_point > 21 && player_soft != 0){
-                        player_point -= 10;
-                        player_soft--;
-                    }
+//                    if (player_point > 21 && player_soft != 0){
+//                        player_point -= 10;
+//                        player_soft--;
+//                    }
                     if (player_point <= 21)
                         giveCard("s", true);
                     if (player_point > 21) {
                         if (player_soft != 0) {
                             player_point -= 10;
                             player_soft--;
+                            playerLabel.setText("Player Point: " + player_point);
                         } else {
                             panel_n.removeAll();
                             panel_n.add(computerLabel);
@@ -382,7 +384,15 @@ public class BlackJackFrame extends JFrame{
                 else
                     player_point += n2 % 13 + 1;
             }
-
+            if (player_point > 21 && player_soft != 0){
+                player_point -= 10;
+                player_soft--;
+            }
+            if (computer_point > 21 && computer_soft != 0){
+                computer_point -= 10;
+                computer_soft--;
+            }
+            System.out.println(computer_soft);
             playerLabel.setText("Player Point: " + player_point);
         }
 
