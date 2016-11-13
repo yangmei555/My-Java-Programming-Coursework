@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class BlackJackFrame extends JFrame{
     private static final int FRAME_WIDTH = 1000;
-    private static final int FRAME_HEIGHT = 1000;
+    private static final int FRAME_HEIGHT = 800;
     private static final int AREA_ROWS = 10;
     private static final int AREA_COLUMNS = 30;
     private static final int COMPONENT_WIDTH = 300;
@@ -57,7 +57,10 @@ public class BlackJackFrame extends JFrame{
         panel_n.setLayout(new GridLayout(1, 10));
         panel_n.add(computerLabel);
 
+        panel_n.setPreferredSize(new Dimension(800, 160));
+
         add(panel_n, BorderLayout.NORTH);
+        //add(panel_n);
     }
 
     public void createPanel_s(){
@@ -66,12 +69,14 @@ public class BlackJackFrame extends JFrame{
         panel_s.setLayout(new GridLayout(1, 10));
         panel_s.add(playerLabel);
 
+        panel_s.setPreferredSize(new Dimension(800, 160));
         add(panel_s, BorderLayout.SOUTH);
+        //add(panel_s);
     }
 
     public void createPanel_w(){
         panel_w = new JPanel();
-        panel_w.setLayout(new GridLayout(16, 1));
+        panel_w.setLayout(new GridLayout(10, 1));
         resultLabel = new JLabel("Result: no result");
         bet_input_label = new JLabel("Please input your bet amount:");
         betField = new JTextField();
@@ -275,7 +280,7 @@ public class BlackJackFrame extends JFrame{
     public void createPanel_e(){
         panel_e = new JPanel();
         restart = new JButton("Restart");
-        panel_e.setLayout(new GridLayout(4, 1));
+        panel_e.setLayout(new GridLayout(3, 1));
         //panel_e.setLayout(new Verr);
         result_area = new JTextArea(AREA_ROWS, AREA_COLUMNS);
         result_area.setEditable(false);
@@ -319,6 +324,7 @@ public class BlackJackFrame extends JFrame{
                 }
             }
         });
+        //panel_e.setPreferredSize(new Dimension(200, 800));
         add(panel_e, BorderLayout.EAST);
     }
 
