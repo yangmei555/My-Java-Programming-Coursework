@@ -392,7 +392,7 @@ public class BlackJackFrame extends JFrame{
                 computer_point -= 10;
                 computer_soft--;
             }
-            System.out.println(computer_soft);
+            //System.out.println(computer_soft);
             playerLabel.setText("Player Point: " + player_point);
         }
 
