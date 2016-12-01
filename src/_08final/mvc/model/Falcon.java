@@ -102,7 +102,7 @@ public class Falcon extends Sprite {
 
 		//these are falcon specific
 		setProtected(true);
-		setFadeValue(0);
+		setFadeValue(125);
 	}
 	
 	
@@ -186,11 +186,15 @@ public class Falcon extends Sprite {
 		if (getFadeValue() == 255) {
 			colShip = Color.white;
 		} else {
-			colShip = new Color(adjustColor(getFadeValue(), 200), adjustColor(
-					getFadeValue(), 175), getFadeValue());
+			try {
+				colShip = new Color(adjustColor(getFadeValue(), 200), adjustColor(
+						getFadeValue(), 175), getFadeValue());
+			} catch (Exception e) {
+				colShip = Color.RED;
+			}
 		}
-
-
+		g.setColor(Color.YELLOW);
+		g.drawOval((int)getCenter().getX()-38,(int)getCenter().getY() -38,80,80);
 
 		//thrusting
 		if (bFlame) {
@@ -246,7 +250,7 @@ public class Falcon extends Sprite {
 
 	public void setProtected(boolean bParam) {
 		if (bParam) {
-			setFadeValue(0);
+			setFadeValue(125);
 		}
 		bProtected = bParam;
 	}

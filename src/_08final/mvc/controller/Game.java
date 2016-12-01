@@ -135,8 +135,6 @@ public class Game implements Runnable, KeyListener {
 
 	private void checkCollisions() {
 
-		
-
 		Point pntFriendCenter, pntFoeCenter;
 		int nFriendRadiux, nFoeRadiux;
 
@@ -153,6 +151,8 @@ public class Game implements Runnable, KeyListener {
 
 					//falcon
 					if ((movFriend instanceof Falcon) ){
+//					       CommandCenter.getInstance().getFalcon().setProtected(true);
+
 						if (!CommandCenter.getInstance().getFalcon().getProtected()){
 							CommandCenter.getInstance().getOpsList().enqueue(movFriend, CollisionOp.Operation.REMOVE);
 							CommandCenter.getInstance().spawnFalcon(false);
@@ -188,7 +188,7 @@ public class Game implements Runnable, KeyListener {
 
 					CommandCenter.getInstance().getOpsList().enqueue(movFloater, CollisionOp.Operation.REMOVE);
 					Sound.playSound("pacman_eatghost.wav");
-	
+					CommandCenter.getInstance().setNumFalcons(CommandCenter.getInstance().getNumFalcons()+1);
 				}//end if 
 			}//end inner for
 		}//end if not null
@@ -254,7 +254,9 @@ public class Game implements Runnable, KeyListener {
 				//spawn two medium Asteroids
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
-
+				CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+5);
+				// TODO: 2016/11/30
+//				CommandCenter.getInstance().getOpsList().enqueue(new Debris(astExploded.getCenter()), CollisionOp.Operation.ADD);
 			} 
 			//medium size aseroid exploded
 			else if(astExploded.getSize() == 1){
@@ -262,10 +264,16 @@ public class Game implements Runnable, KeyListener {
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
+				CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+10);
 
+			}else if(astExploded.getSize() == 1){
+			    CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+15);
 			}
 
-		} 
+			for (int i = 0;i<10;i++) {
+				CommandCenter.getInstance().getOpsList().enqueue(new Debris(astExploded), CollisionOp.Operation.ADD);
+			}
+		}
 
 		//remove the original Foe
 		CommandCenter.getInstance().getOpsList().enqueue(movFoe, CollisionOp.Operation.REMOVE);
@@ -292,6 +300,8 @@ public class Game implements Runnable, KeyListener {
 			//CommandCenter.getInstance().getMovFloaters().enqueue(new NewShipFloater());
 			CommandCenter.getInstance().getOpsList().enqueue(new NewShipFloater(), CollisionOp.Operation.ADD);
 		}
+		//TODO
+//		CommandCenter.getInstance().getOpsList().enqueue(new NewShipFloater(), CollisionOp.Operation.ADD);
 	}
 
 	// Called when user presses 's'
@@ -430,7 +440,6 @@ public class Game implements Runnable, KeyListener {
 				fal.thrustOff();
 				clpThrust.stop();
 				break;
-				
 			case MUTE:
 				if (!bMuted){
 					stopLoopingSounds(clpMusicBackground);
