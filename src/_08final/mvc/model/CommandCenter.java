@@ -20,6 +20,7 @@ public class CommandCenter {
 	private List<Movable> movFriends = new ArrayList<Movable>(100);
 	private List<Movable> movFoes = new ArrayList<Movable>(200);
 	private List<Movable> movFloaters = new ArrayList<Movable>(50);
+	private List<Movable> movUFOs = new ArrayList<Movable>(50);
 
 	private GameOpsList opsList = new GameOpsList();
 
@@ -73,6 +74,7 @@ public class CommandCenter {
 		movFriends.clear();
 		movFoes.clear();
 		movFloaters.clear();
+        movUFOs.clear();
 	}
 
 	public  boolean isPlaying() {
@@ -151,7 +153,9 @@ public class CommandCenter {
 		return movFloaters;
 	}
 
-
+    public  List<Movable> getMovUFOss() {
+        return movUFOs;
+    }
 
 
 }

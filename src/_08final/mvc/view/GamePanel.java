@@ -202,10 +202,15 @@ public class GamePanel extends Panel {
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 280);
 
-		strDisplay = "'Numeric-Enter' for Hyperspace";
+		strDisplay = "left index finger on 'T' for Big Weapon";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 320);
+
+		strDisplay = "'Numeric-Enter' for Hyperspace";
+		grpOff.drawString(strDisplay,
+				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+						+ nFontHeight + 360);
 	}
 	
 	public GameFrame getFrm() {return this.gmf;}

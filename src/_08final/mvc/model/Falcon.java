@@ -34,7 +34,6 @@ public class Falcon extends Sprite {
 
 	private Point[] pntFlames = new Point[FLAME.length];
 
-	
 	// ==============================================================
 	// CONSTRUCTOR 
 	// ==============================================================
@@ -193,8 +192,10 @@ public class Falcon extends Sprite {
 				colShip = Color.RED;
 			}
 		}
-		g.setColor(Color.YELLOW);
-		g.drawOval((int)getCenter().getX()-38,(int)getCenter().getY() -38,80,80);
+		if (bShield && bProtected){
+			g.setColor(Color.YELLOW);
+			g.drawOval((int)getCenter().getX()-38,(int)getCenter().getY() -38,80,80);
+		}
 
 		//thrusting
 		if (bFlame) {
@@ -250,7 +251,7 @@ public class Falcon extends Sprite {
 
 	public void setProtected(boolean bParam) {
 		if (bParam) {
-			setFadeValue(125);
+			setFadeValue(0);
 		}
 		bProtected = bParam;
 	}
@@ -258,5 +259,11 @@ public class Falcon extends Sprite {
 
 	public boolean getProtected() {return bProtected;}
 
-	
+	public boolean isbShield() {
+		return bShield;
+	}
+
+	public void setbShield(boolean bShield) {
+		this.bShield = bShield;
+	}
 } //end class

@@ -42,10 +42,11 @@ public class Game implements Runnable, KeyListener {
 			MUTE = 77, // m-key mute
 
 	// for possible future use
-	// HYPER = 68, 					// d key
-	// SHIELD = 65, 				// a key arrow
-	// NUM_ENTER = 10, 				// hyp
-	 SPECIAL = 70; 					// fire special weapon;  F key
+	 HYPER = 68, 					// d key
+	 SHIELD = 65, 				// a key arrow
+	 NUM_ENTER = 10, 				// hyp
+	 SPECIAL = 70, 					// fire special weapon;  F key
+	 NEWFIRE = 84;
 
 	private Clip clpThrust;
 	private Clip clpMusicBackground;
@@ -254,10 +255,9 @@ public class Game implements Runnable, KeyListener {
 				//spawn two medium Asteroids
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
-				CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+5);
-				// TODO: 2016/11/30
-//				CommandCenter.getInstance().getOpsList().enqueue(new Debris(astExploded.getCenter()), CollisionOp.Operation.ADD);
-			} 
+				CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+15);
+				CommandCenter.getInstance().getOpsList().enqueue(new UFO(), CollisionOp.Operation.ADD);
+			}
 			//medium size aseroid exploded
 			else if(astExploded.getSize() == 1){
 				//spawn three small Asteroids
@@ -266,14 +266,23 @@ public class Game implements Runnable, KeyListener {
 				CommandCenter.getInstance().getOpsList().enqueue(new Asteroid(astExploded), CollisionOp.Operation.ADD);
 				CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+10);
 
-			}else if(astExploded.getSize() == 1){
-			    CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+15);
+			}else if(astExploded.getSize() == 2){
+			    CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+5);
 			}
 
 			for (int i = 0;i<10;i++) {
 				CommandCenter.getInstance().getOpsList().enqueue(new Debris(astExploded), CollisionOp.Operation.ADD);
 			}
 		}
+        if (movFoe instanceof UFO){
+
+            //we know this is an Asteroid, so we can cast without threat of ClassCastException
+            UFO ufo = (UFO) movFoe;
+            //big asteroid
+
+            CommandCenter.getInstance().setScore(CommandCenter.getInstance().getScore()+15);
+
+        }
 
 		//remove the original Foe
 		CommandCenter.getInstance().getOpsList().enqueue(movFoe, CollisionOp.Operation.REMOVE);
@@ -301,7 +310,6 @@ public class Game implements Runnable, KeyListener {
 			CommandCenter.getInstance().getOpsList().enqueue(new NewShipFloater(), CollisionOp.Operation.ADD);
 		}
 		//TODO
-//		CommandCenter.getInstance().getOpsList().enqueue(new NewShipFloater(), CollisionOp.Operation.ADD);
 	}
 
 	// Called when user presses 's'
@@ -402,7 +410,15 @@ public class Game implements Runnable, KeyListener {
 
 			// possible future use
 			// case KILL:
-			// case SHIELD:
+			 case SHIELD:
+				 if (fal.isbShield()) {
+					 fal.setbShield(false);
+					 fal.setProtected(false);
+				 } else {
+					 fal.setbShield(true);
+					 fal.setProtected(true);
+				 }
+			 	break;
 			// case NUM_ENTER:
 
 			default:
@@ -423,7 +439,12 @@ public class Game implements Runnable, KeyListener {
 				CommandCenter.getInstance().getOpsList().enqueue(new Bullet(fal), CollisionOp.Operation.ADD);
 				Sound.playSound("laser.wav");
 				break;
-				
+
+            case NEWFIRE:
+                CommandCenter.getInstance().getOpsList().enqueue(new Bullet_New(fal), CollisionOp.Operation.ADD);
+                Sound.playSound("laser.wav");
+                break;
+
 			//special is a special weapon, current it just fires the cruise missile. 
 			case SPECIAL:
 				CommandCenter.getInstance().getOpsList().enqueue(new Cruise(fal), CollisionOp.Operation.ADD);
